@@ -1,0 +1,96 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "com.ui5flow.productsdemo.display",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "0.1.0"
+        },
+        "dataSources": {
+            "customersData": {
+                "uri": "/V4/Northwind/Northwind.svc/",
+                "type": "OData",
+                "preload": true,
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }                        
+        }        
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": "com.ui5flow.productsdemo.display.view.App",
+        "dependencies": {
+            "minUI5Version": "1.42",
+            "libs": {
+                "sap.m": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.ui5flow.productsdemo.display.i18n.i18n"
+                }
+            },            
+            "customersData": {
+                "dataSource": "customersData",
+                "settings" : {
+                    "synchronizationMode" : "None"
+                }    
+            }                        
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "com.ui5flow.productsdemo.display.view",
+                "controlId": "app",
+                "controlAggregation": [
+                    "pages"
+                ],
+                "transition": "slide",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                }
+            },
+            "routes": [{
+                "pattern": "",
+                "name": "list",
+                "target": [
+                    "list"
+                ]
+            }],
+            "targets": {
+                "list": {
+                    "viewName": "List",
+                    "viewLevel": 1,
+                    "controlAggregation": "pages"
+                }
+            }
+        },
+        "resources": {
+            "css": [{
+                "uri": "css/styles.css"
+            }]
+        }
+    }
+}

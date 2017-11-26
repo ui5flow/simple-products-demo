@@ -1,0 +1,9 @@
+<mvc:View
+	controllerName="com.ui5flow.productsdemo.display.controller.App"	
+  	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	height="100%">
+
+	<App id="app" />
+
+</mvc:View>

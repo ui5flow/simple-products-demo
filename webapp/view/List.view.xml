@@ -1,0 +1,42 @@
+<mvc:View controllerName="com.ui5flow.productsdemo.display.controller.List" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m">
+    <Page id="list" showNavButton="false" title="{i18n>List.title}" width="100%" showHeader="true" floatingFooter="false">
+        <content>
+            <l:VerticalLayout class="sapUiNoContentPadding" width="100%">
+                <l:content>
+                    <Table id="productsTable" inset="false" items="{
+                            path: 'customersData>/Customers',
+                            sort: 'CompanyName'
+                        }">
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="{i18n>List.tabTitle}" />
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column width="20em">
+                                <Text text="{i18n>List.tabHeadCompany}" />
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true" width="20em">
+                                <Text text="{i18n>List.tabHeadContact}" />
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>List.tabHeadAddress}" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <ObjectIdentifier title="{customersData>CompanyName}" text="{customersData>CustomerID}" />
+                                    <Text text="{customersData>ContactName}" />
+                                    <Text text="{customersData>Address}, {customersData>PostalCode} {customersData>City}, {customersData>Country}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </l:content>
+            </l:VerticalLayout>
+        </content>
+        <footer>
+        </footer>
+    </Page>
+</mvc:View>
